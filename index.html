@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이호빈 - 프로필</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-teal: #00d9c0;
+      --color-dark: #0f0f1a;
+      --color-card: #1a1a2e;
+    }
+
+    * {
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+    }
+
+    body {
+      background-color: var(--color-dark);
+      color: #ffffff;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: rgba(15, 15, 26, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 217, 192, 0.2);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+    }
+
+    nav .container {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--color-teal);
+    }
+
+    .nav-menu {
+      display: none;
+      gap: 3rem;
+    }
+
+    .nav-menu.active {
+      display: flex;
+    }
+
+    @media (min-width: 768px) {
+      .nav-menu {
+        display: flex !important;
+      }
+      .menu-toggle {
+        display: none !important;
+      }
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--color-teal);
+    }
+
+    .menu-toggle {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Hero Section */
+    section {
+      padding: 80px 1rem;
+    }
+
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 100px;
+    }
+
+    .hero-content {
+      max-width: 80rem;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .hero-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2rem, 10vw, 4rem);
+      font-weight: bold;
+      margin: 1rem 0;
+      line-height: 1.2;
+    }
+
+    .hero-text .label {
+      color: var(--color-teal);
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-text .role {
+      font-size: 1.5rem;
+      color: #d1d5db;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-text .description {
+      font-size: 1.125rem;
+      color: #9ca3af;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (min-width: 640px) {
+      .hero-buttons {
+        flex-direction: row;
+      }
+    }
+
+    .btn {
+      padding: 12px 32px;
+      border-radius: 9999px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background-color: var(--color-teal);
+      color: var(--color-dark);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 30px rgba(0, 217, 192, 0.5);
+    }
+
+    .btn-secondary {
+      border: 2px solid var(--color-teal);
+      color: var(--color-teal);
+      background: transparent;
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(0, 217, 192, 0.1);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .social-links a {
+      color: #9ca3af;
+      transition: color 0.3s;
+      width: 24px;
+      height: 24px;
+    }
+
+    .social-links a:hover {
+      color: var(--color-teal);
+    }
+
+    .hexagon-border {
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, var(--color-teal) 0%, #00a89c 100%);
+      padding: 4px;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      margin: 0 auto;
+    }
+
+    .hexagon-border img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+
+    @media (max-width: 767px) {
+      .hexagon-border {
+        display: none;
+      }
+    }
+
+    /* About Section */
+    #about {
+      background-color: var(--color-dark);
+    }
+
+    .about-content {
+      max-width: 80rem;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (min-width: 768px) {
+      .about-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .about-text h2 .teal {
+      color: var(--color-teal);
+    }
+
+    .about-text p {
+      color: #d1d5db;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .interests-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 2rem 0 1rem 0;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: var(--color-card);
+      border: 1px solid rgba(0, 217, 192, 0.5);
+      color: var(--color-teal);
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    /* Skills Section */
+    #skills {
+      background-color: var(--color-card);
+    }
+
+    .skills-content {
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-card {
+      background-color: var(--color-dark);
+      border: 1px solid rgba(0, 217, 192, 0.3);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: border-color 0.3s;
+    }
+
+    .skill-card:hover {
+      border-color: rgba(0, 217, 192, 0.6);
+    }
+
+    .skill-icon {
+      width: 48px;
+      height: 48px;
+      background-color: rgba(0, 217, 192, 0.2);
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .skill-icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-teal);
+    }
+
+    .skill-card h3 {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-card p {
+      color: #9ca3af;
+      font-size: 0.875rem;
+    }
+
+    /* Contact Section */
+    #contact {
+      max-width: 42rem;
+      margin: 80px auto;
+      padding: 2rem;
+    }
+
+    #contact h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    #contact h2 .teal {
+      color: var(--color-teal);
+    }
+
+    #contact > p {
+      color: #9ca3af;
+      font-size: 1.125rem;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    #emailCard {
+      background-color: var(--color-card);
+      border: 1px solid rgba(0, 217, 192, 0.3);
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+
+    #emailCard:hover {
+      border-color: rgba(0, 217, 192, 0.6);
+    }
+
+    #emailCard svg {
+      width: 32px;
+      height: 32px;
+      color: var(--color-teal);
+      margin: 0 auto 1rem;
+    }
+
+    #emailCard h3 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    #emailCard p {
+      color: #9ca3af;
+    }
+
+    /* Toast */
+    #toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--color-teal);
+      color: var(--color-dark);
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      display: none;
+      box-shadow: 0 0 30px rgba(0, 217, 192, 0.5);
+      z-index: 100;
+    }
+
+    #toast.show {
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(0, 217, 192, 0.2);
+      padding: 2rem 1rem;
+      text-align: center;
+      color: #6b7280;
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+
+    /* Section Titles */
+    section h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    section > p {
+      color: #9ca3af;
+      font-size: 1.125rem;
+      margin-bottom: 3rem;
+    }
+
+    /* Scroll reveal animation */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .scroll-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <div class="logo">이호빈</div>
+      <div class="nav-menu" id="navMenu">
+        <a href="#hero" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-text scroll-reveal">
+        <div class="label">Hello, <span style="color: white;">I'm</span></div>
+        <h1>이호빈</h1>
+        <div class="role">RGA 상품개발팀</div>
+        <div class="description">
+          AI 공부를 시작한 취미생입니다. 새로운 기술을 배우고 실제로 구현하는 것을 즐깁니다.
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#about" class="btn btn-primary">더 알아보기</a>
+          <a href="#contact" class="btn btn-secondary">연락하기</a>
+        </div>
+
+        <div class="social-links">
+          <a href="#" title="Twitter">
+            <svg fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7-7 7-7"/>
+            </svg>
+          </a>
+          <a href="mailto:hobinlee1@gmail.com" title="Email">
+            <svg fill="currentColor" viewBox="0 0 24 24">
+              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </a>
+          <a href="#" title="LinkedIn">
+            <svg fill="currentColor" viewBox="0 0 24 24">
+              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hexagon-border scroll-reveal" style="animation-delay: 0.2s;">
+        <img src="avatar.jpeg" alt="이호빈">
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="about-content">
+      <div class="about-text scroll-reveal">
+        <h2>Who <span class="teal">I'm</span></h2>
+        <p>
+          안녕하세요! 저는 <strong>RGA 상품개발팀</strong>에서 일하고 있는 이호빈입니다.
+        </p>
+        <p>
+          처음에는 직장 업무에만 집중했지만, 최근 AI의 빠른 발전과 무한한 가능성에 매료되어 AI 공부를 시작한 취미생입니다.
+        </p>
+        <p>
+          현재는 AI, 웹개발, 데이터 분석에 관심을 갖고 다양한 프로젝트와 학습을 진행 중입니다.
+        </p>
+
+        <div class="interests-title">관심 분야</div>
+        <div class="badges">
+          <span class="badge">🤖 AI/ML</span>
+          <span class="badge">💻 웹 개발</span>
+          <span class="badge">📊 데이터</span>
+          <span class="badge">☁️ 클라우드</span>
+        </div>
+      </div>
+
+      <div class="scroll-reveal" style="animation-delay: 0.2s;">
+        <div style="width: 100%; height: 320px; background-color: var(--color-card); border: 1px solid rgba(0, 217, 192, 0.3); border-radius: 1rem; overflow: hidden;">
+          <img src="placeholder.jpg" alt="About" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+          <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #9ca3af;">
+            이미지 영역
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="skills-content">
+      <h2>What I <span class="teal">Do</span></h2>
+      <p>업무 및 기술</p>
+
+      <div class="skills-grid">
+        <div class="skill-card scroll-reveal" style="animation-delay: 0.1s;">
+          <div class="skill-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3>Product Development</h3>
+          <p>사용자 중심의 제품을 개발하고 개선하는 것에 집중합니다.</p>
+        </div>
+
+        <div class="skill-card scroll-reveal" style="animation-delay: 0.2s;">
+          <div class="skill-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <h3>Data & Analytics</h3>
+          <p>데이터를 분석하고 인사이트를 도출하는 작업을 수행합니다.</p>
+        </div>
+
+        <div class="skill-card scroll-reveal" style="animation-delay: 0.3s;">
+          <div class="skill-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+            </svg>
+          </div>
+          <h3>Learning & Growth</h3>
+          <p>새로운 기술을 배우고 지속적으로 성장하려고 노력합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Get In <span class="teal">Touch</span></h2>
+    <p>연락해주세요</p>
+
+    <div id="emailCard">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+      </svg>
+      <h3>hobinlee1@gmail.com</h3>
+      <p>클릭하면 클립보드에 복사됩니다</p>
+    </div>
+  </section>
+
+  <!-- Toast -->
+  <div id="toast">✓ 이메일이 클립보드에 복사되었습니다!</div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 이호빈. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Active Nav Link
+    const observerOptions = {
+      threshold: 0.5,
+      rootMargin: '-80px 0px -50% 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('section[id]').forEach(section => observer.observe(section));
+
+    // Scroll Animations
+    const scrollObserverOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, scrollObserverOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => scrollObserver.observe(el));
+
+    // Email Copy
+    const emailCard = document.getElementById('emailCard');
+    const toast = document.getElementById('toast');
+
+    emailCard.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('hobinlee1@gmail.com');
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3000);
+      } catch (err) {
+        console.error('Failed to copy:', err);
+      }
+    });
+  </script>
+</body>
+</html>
